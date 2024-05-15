@@ -25,7 +25,7 @@ namespace PayCalculatorTemplate
             InitializeComponent();
             
             //CHANGE THIS TO YOUR FILE HELEN
-            var fileName = @"C:\Users\User\Desktop\TemplatesWIP\Upated_Pro_Templates(WPF_MAUI)\PayCalculatorTemplate_WPF\PayCalculatorTemplate\PayCalculatorTemplate\employee.csv";
+            var fileName = @"C:\Users\User\Source\Repos\PayCalculatorTemplateWPF\PayCalculatorTemplate\employee.csv";
 
 
             List<CsvMap> importedRecords = CsvImporter.ImportSomeRecords(fileName);
@@ -38,7 +38,7 @@ namespace PayCalculatorTemplate
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Calculate(object sender, RoutedEventArgs e)
         {
 
         }
@@ -48,7 +48,7 @@ namespace PayCalculatorTemplate
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Save(object sender, RoutedEventArgs e)
         {
 
         }
