@@ -13,14 +13,14 @@ namespace PayCalculatorTemplate
 {
     public class CsvImporter
     {
-        public static List<CsvMap> ImportSomeRecords(string fileName)
+        public static List<CsvEmployee> ImportSomeRecords(string fileName)
         {
-            var myRecords = new List<CsvMap>();
+            var myRecords = new List<CsvEmployee>();
             using (var reader = new StreamReader(fileName))
             {
                 using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    csv.Context.RegisterClassMap<CsvMapMap>();
+                    csv.Context.RegisterClassMap<CsvMap>();
 
 
                     int employeeID;
@@ -53,9 +53,9 @@ namespace PayCalculatorTemplate
             return myRecords;
         }
 
-        public static CsvMap CreateRecord(int employeeID, string firstName, string lastName, string typeEmployee, int hourlyRate, string taxthreshold)
+        public static CsvEmployee CreateRecord(int employeeID, string firstName, string lastName, string typeEmployee, int hourlyRate, string taxthreshold)
         {
-            CsvMap record = new CsvMap();
+            CsvEmployee record = new CsvEmployee();
 
             record.employeeID = employeeID;
             record.firstName = firstName;
@@ -68,7 +68,7 @@ namespace PayCalculatorTemplate
         }
     }
 
-    public class CsvMap
+    public class CsvEmployee
     {
         public int employeeID { get; set; }
         public string firstName { get; set; }
@@ -78,9 +78,9 @@ namespace PayCalculatorTemplate
         public string taxthreshold { get; set; }
     }
 
-    public sealed class CsvMapMap : ClassMap<CsvMap>
+    public sealed class CsvMap : ClassMap<CsvEmployee>
     {
-        public CsvMapMap()
+        public CsvMap()
         {
             Map(m => m.employeeID).Index(0);
             Map(m => m.firstName).Index(1);

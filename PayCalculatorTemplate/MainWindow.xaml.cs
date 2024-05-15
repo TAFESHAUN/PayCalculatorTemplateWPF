@@ -20,27 +20,51 @@ namespace PayCalculatorTemplate
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        /*
+        * Object that I will set the value to the current
+        * selected employee record in my datagrid
+        */
+        public CsvEmployee selectedEmployee;
+        
+        /// <summary>
+        /// XML is for pascal and up OR methods, classes, interface etc
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
             
-            //CHANGE THIS TO YOUR FILE HELEN
-            var fileName = @"C:\Users\User\Desktop\TemplatesWIP\Upated_Pro_Templates(WPF_MAUI)\PayCalculatorTemplate_WPF\PayCalculatorTemplate\PayCalculatorTemplate\employee.csv";
+            var fileName = @"C:\Users\User\source\repos\PayCalculatorTemplateWPF\PayCalculatorTemplate\employee.csv";
 
 
-            List<CsvMap> importedRecords = CsvImporter.ImportSomeRecords(fileName);
+            List<CsvEmployee> importedRecords = CsvImporter.ImportSomeRecords(fileName);
 
             empDataGrid.DataContext = importedRecords;
+
+            selectedEmployee = new CsvEmployee();
+            selectedEmployee.employeeID = -1;//Change to null or empty BUT -1 is good enough for now
         }
+
+
 
         /// <summary>
         /// Calculate 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Calculate(object sender, RoutedEventArgs e)
         {
-
+            //This is just to show a msg if you selected an employee
+            if (selectedEmployee.employeeID != -1)
+            {
+                MessageBox.Show($"You selected:{selectedEmployee.firstName} Tax:{selectedEmployee.taxthreshold}");
+                //Pass object info over, Pass over the actual object etc
+                //Payslip and Pay Calculator
+            }
+            else
+            {
+                MessageBox.Show("Please select an employee");
+            }
         }
 
         /// <summary>
@@ -48,9 +72,14 @@ namespace PayCalculatorTemplate
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Save(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void empDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedEmployee = empDataGrid.SelectedItem as CsvEmployee; //As a record in my Grid
         }
     }
 }

@@ -14,7 +14,7 @@
         <Label Content="Employee Details" HorizontalAlignment="Left" Margin="258,2,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Payment Summary" HorizontalAlignment="Left" Margin="771,2,0,0" VerticalAlignment="Top" FontSize="16"/>
         <DataGrid x:Name="empDataGrid" Margin="32,54,391,133" AutoGenerateColumns="False"
-              ItemsSource="{Binding}">
+              ItemsSource="{Binding}" SelectionChanged="empDataGrid_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding employeeID}" Header="id" Width="*"/>
                 <DataGridTextColumn Binding="{Binding firstName}" Width="*" Header="fName"/>
@@ -27,9 +27,9 @@
         </DataGrid>
         <Label Content="Hours Worked (hr)" HorizontalAlignment="Left" Margin="285,439,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Margin="410,443,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="60"/>
-        <Button Content="Calculate" HorizontalAlignment="Left" Margin="516,437,0,0" VerticalAlignment="Top" Height="28" Width="103" Click="Button_Click"/>
+        <Button Content="Calculate" HorizontalAlignment="Left" Margin="516,437,0,0" VerticalAlignment="Top" Height="28" Width="103" Click="Button_Calculate"/>
         <TextBlock HorizontalAlignment="Left" Margin="720,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" Height="320" Background="#FFE4E4E4"/>
-        <Button Content="Save Payslip" HorizontalAlignment="Left" Margin="810,433,0,0" VerticalAlignment="Top" Height="28" Width="103" Click="Button_Click_1"/>
+        <Button Content="Save Payslip" HorizontalAlignment="Left" Margin="810,433,0,0" VerticalAlignment="Top" Height="28" Width="103" Click="Button_Save"/>
 
 
     </Grid>
