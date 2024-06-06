@@ -54,10 +54,29 @@ namespace PayCalculatorTemplate
         /// <param name="e"></param>
         private void Button_Calculate(object sender, RoutedEventArgs e)
         {
+            //Grabs the hours as int so that we can do the math
+            var hoursEntered = Convert.ToDouble(hrsWrkEntry.Text);
+            PayCalculator payCalculator = new PayCalculator();
+
             //This is just to show a msg if you selected an employee
             if (selectedEmployee.employeeID != -1)
             {
-                MessageBox.Show($"You selected:{selectedEmployee.firstName} Tax:{selectedEmployee.taxthreshold}");
+                double hourlyRate = selectedEmployee.hourlyRate;
+
+                //MessageBox.Show($"{selectedEmployee.firstName} has earned gross pay: {grossPay}");
+                Payslip payslip = new Payslip();
+                payslip.Id = selectedEmployee.employeeID;
+                payslip.Name = $"{selectedEmployee.firstName} {selectedEmployee.lastName}";
+                payslip.EmployeeType = selectedEmployee.typeEmployee;
+                payslip.taxThreshold = selectedEmployee.taxthreshold;
+                payslip.grossPay = payCalculator.CalculateGrossPay(hoursEntered, hourlyRate);
+                //payslip.tax = payCalculator.CalculateTax();
+                //payslip.super = payCalculator.CalculateSuper();
+
+
+                PaySummary.Text = $"ID: {payslip.Id} Name: {payslip.Name} Gross Pay: {payslip.grossPay} Super: {payslip.super} Tax: {payslip.tax}";
+                //MessageBox.Show($"You have this many hours worked this week{hoursEntered}");
+                //MessageBox.Show($"You selected:{selectedEmployee.firstName} Tax:{selectedEmployee.taxthreshold}");
                 //Pass object info over, Pass over the actual object etc
                 //Payslip and Pay Calculator
             }
