@@ -20,7 +20,7 @@
                 <DataGridTextColumn Binding="{Binding firstName}" Width="*" Header="fName"/>
                 <DataGridTextColumn Binding="{Binding lastName}" Width="*" Header="lName"/>
                 <DataGridTextColumn Binding="{Binding typeEmployee}" Width="*" Header="Job"/>
-                <DataGridTextColumn Binding="{Binding hourlyRate}" Header="HrsWorked" Width="*"/>
+                <DataGridTextColumn Binding="{Binding hourlyRate}" Header="HrlyRate" Width="*"/>
                 <DataGridTextColumn Binding="{Binding taxthreshold}" Header="Threshhold" Width="*"/>
             </DataGrid.Columns>
 
